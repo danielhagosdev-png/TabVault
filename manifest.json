@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "TabVault — Tab & Context Saver",
+  "version": "1.0.0",
+  "description": "Save, tag, search, and restore browser sessions with context notes and keyboard shortcuts. Everything stays on your device.",
+  "permissions": [
+    "tabs",
+    "storage",
+    "contextMenus",
+    "favicon"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "TabVault — Save or Restore Sessions",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "save-current-session": {
+      "suggested_key": {
+        "default": "Alt+Shift+S",
+        "mac": "Command+Shift+S"
+      },
+      "description": "Quick-save all tabs in the current window as a TabVault session"
+    }
+  }
+}

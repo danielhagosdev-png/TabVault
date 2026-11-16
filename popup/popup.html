@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TabVault</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-name">TabVault</span>
+          <span id="window-tab-count" class="muted-meta">0 open</span>
+        </div>
+        <div class="topbar-actions">
+          <button id="export-btn" type="button" class="btn-ghost" title="Export sessions as JSON">Export</button>
+          <button id="import-btn" type="button" class="btn-ghost" title="Import sessions from JSON">Import</button>
+          <input id="import-input" type="file" accept="application/json" hidden />
+        </div>
+      </header>
+
+      <div id="status" class="status" role="status" hidden></div>
+
+      <section class="save-panel">
+        <form id="save-form">
+          <div class="field-row split">
+            <input
+              id="session-title"
+              type="text"
+              aria-label="Session title"
+              placeholder="Session title (optional)"
+              autocomplete="off"
+            />
+            <input
+              id="session-tags"
+              type="text"
+              aria-label="Tags"
+              placeholder="Tags (auth, bug-412)"
+              autocomplete="off"
+            />
+          </div>
+          <div class="field-row">
+            <textarea
+              id="session-notes"
+              rows="2"
+              aria-label="Context notes"
+              placeholder="Quick context notes (what you were debugging or comparing)..."
+            ></textarea>
+          </div>
+          <div id="group-suggestions" class="group-suggestions" hidden></div>
+          <label class="check-option">
+            <input id="close-after-save" type="checkbox" />
+            Close tabs after saving
+          </label>
+          <div class="save-footer">
+            <span class="shortcut-hint">Shortcut: <kbd id="shortcut-key">Alt+Shift+S</kbd></span>
+            <button type="submit" class="btn-primary">Save Current Window</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="search-bar">
+        <input
+          id="search-input"
+          type="search"
+          aria-label="Search saved sessions"
+          placeholder="Search saved sessions by title, #tag, notes, or URL..."
+          autocomplete="off"
+        />
+      </section>
+
+      <section id="sessions-list" class="sessions-list" aria-live="polite"></section>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
